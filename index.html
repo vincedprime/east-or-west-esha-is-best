@@ -1,1 +1,23 @@
-<meta http-equiv="refresh" content="0; url=data.json">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cutie Ananya</title>
+</head>
+<body>
+<script>
+fetch('all-lines.json')
+  .then(res => res.json())
+  .then(data => {
+    const keys = Object.keys(data);
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
+    const randomEntry = { [randomKey]: data[randomKey] };
+
+    // Set page content type to JSON (works visually, not actual HTTP header on GitHub Pages)
+    document.open();
+    document.write(JSON.stringify(randomEntry));
+    document.close();
+  });
+</script>
+</body>
+</html>
